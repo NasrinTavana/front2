@@ -11,8 +11,9 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import CustomBtn from '../customBtn/CustomBtn';
+import { Link } from 'react-router-dom';
 
-const pages = ['Products', 'Pricing', 'Blog'];
+const pages = ['Home', 'Ads', 'About','Blog','Contact'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 export default function Navbar() {
@@ -87,7 +88,9 @@ export default function Navbar() {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Link to={`/${page}`}>
+                    <Typography textAlign="center">{page}</Typography>
+                  </Link>
                 </MenuItem>
               ))}
             </Menu>
@@ -113,6 +116,7 @@ export default function Navbar() {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
+               <Link to={`/${page}`}>
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
@@ -120,12 +124,13 @@ export default function Navbar() {
               >
                 {page}
               </Button>
+              </Link>
             ))}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-   
-            <CustomBtn text="Register"/>
+
+            <CustomBtn text="Register" />
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"
@@ -144,7 +149,9 @@ export default function Navbar() {
             >
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                 
                   <Typography textAlign="center">{setting}</Typography>
+                  
                 </MenuItem>
               ))}
             </Menu>
